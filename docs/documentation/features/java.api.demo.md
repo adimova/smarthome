@@ -12,13 +12,12 @@ The purpose of the demo is to give an example of how to use the Eclipse SmartHom
 
 The Welcome Home Application illustrates:
 
-	How to implement Module Types and their provider and how to register it.
-	How to implement Rule Templates and their provider and how to register it.
-	How to use templates for creation of the Automation Rules.
-	How to inject the rules into the Automation Rule Engine by registering Rule Provider service.
-	How to implement a Module Handler Factory that helps the Automation Engine to execute the rules
-	and how to register it.
-	How to implement the Module Handles of the Automation Module objects.
+* How to implement Module Types and their provider and how to register it.
+* How to implement Rule Templates and their provider and how to register it.
+* How to use templates for creation of the Automation Rules.
+* How to inject the rules into the Automation Rule Engine by registering Rule Provider service.
+* How to implement a Module Handler Factory that helps the Automation Engine to execute the rules and how to register it.
+* How to implement the Module Handles of the Automation Module objects.
 
 ### Module Types
 
@@ -29,11 +28,11 @@ The Welcome Home Application illustrates how to create your own Module Types and
 Trigger Type gives a base for creation of Trigger objects. Welcome Home Application illustrates how to implement some specific Trigger Types and how to provide them to the Automation Engine. In this demo are exposed two Trigger Types:
  
 	AirConditionerTriggerType
-	StateTriggerType
+	LightsTriggerType
 
 `AirConditionerTriggerType` can be used for creation of the Triggers that firing a rule that will switch on the Air Conditioner if its current state is "off" and the current room temperature is lower or higher comparing to the target temperature and if the mode of the conditioner is  accordingly "Heating" or "Cooling".
 
-`StateTriggerType` can be used for creation of the Triggers that firing a rule that will switch on the lights if their current state is "off" or a rule that will lowering the blinds if their current state is "up".
+`LightsTriggerType` can be used for creation of the Triggers that firing a rule that will switch on the lights if their current state is "off" or a rule that will lowering the blinds if their current state is "up".
 
 #### Condition Type
 
@@ -50,7 +49,9 @@ These conditions can be missed if the particular home devices handle the situati
 
 #### Action Type
 
-Action Type gives a base for creation of Action objects. Welcome Home Application illustrates how to implement some specific Action Types and how to provide them. In this demo is exposed one   Action Type `WelcomeHomeActionType`.
+Action Type gives a base for creation of Action objects. Welcome Home Application illustrates how to implement some specific Action Types and how to provide them. In this demo is exposed one Action Type:
+
+    WelcomeHomeActionType
 
 `WelcomeHomeActionType` can be used for creation of the Actions that give a command to the particular home devices. Then they will execute it and the rule will be completed.
 
@@ -81,8 +82,8 @@ It is created using described above Module Types for creation of its Automation 
 
 The template configuration parameters are:
 
-`CONFIG_TARGET_TEMPERATURE = "targetTemperature"` referred by `TemperatureConditionType.CONFIG_TEMPERATURE = "temperatute"`
-`CONFIG_OPERATION = "operation"` referred by `TemperatureConditionType.CONFIG_OPERATOR = "operator"`
+* `CONFIG_TARGET_TEMPERATURE = "targetTemperature"` referred by `TemperatureConditionType.CONFIG_TEMPERATURE = "temperatute"`
+* `CONFIG_OPERATION = "operation"` referred by `TemperatureConditionType.CONFIG_OPERATOR = "operator"`
 
 which are the configuration parameters of the `TemperatureConditionType`. Their default values are `"operation" = "heating"` and `"targetTemperature" = 18`. They are referred so the user can modify their values. For example the `"targetTemperature"` can be set to 20 or the `"operation"` can be set to "cooling".
 
