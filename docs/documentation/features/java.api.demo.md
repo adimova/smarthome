@@ -149,7 +149,7 @@ Trigger Handler serves to notify the Automation Engine about firing the Triggers
 
 #### Condition Handler
 
-Condition Handler serves to help the Automation Engine to decide if to continue with the execution of the rule or to terminate it. Simple implementation of it can be seen into `StateConditionHandler` or `TemperatureConditionHandler` class.
+Condition Handler serves to help the Automation Engine to decide if it continues with the execution of the rule or to terminate it. Simple implementation of it can be seen into `StateConditionHandler` or `TemperatureConditionHandler` class.
 
 #### Action Handler
 
@@ -157,7 +157,7 @@ Action Handler is used to help the Automation Engine to execute the specific Act
 
 #### Module Handler Factory
 
-Module Handler Factory serves as provider of the Module Handlers. It registers itself as a service to inform the Automation Engine, handlers for which Module Types provides. The Automation Engine refer to it, giving it module and receive in response - a handler of the module. A simple implementation of it can be seen into `WelcomeHomeHandlerFactory` class.
+Module Handler Factory serves as provider of the Module Handlers. It registers itself as a service to inform the Automation Engine, handlers for which Module Types provides. The Automation Engine refers to it, gives it a module and receives in response a handler of the module. A simple implementation of it can be seen into `WelcomeHomeHandlerFactory` class.
 
 ### Commands
 
@@ -169,7 +169,7 @@ The demo provides two commands that enable the user to have control over the set
 Parameters: `<mode> <temperature>`
 
 Description:
-	Serves to configure air conditioner's mode(cooling/heating) and target temperature by updating the `"AirConditionerSwitchOnRule"` rule configuration
+	Serves to configure air conditioner's mode(cooling/heating) and target temperature by updating the `AirConditionerSwitchOnRule` rule configuration
 
 ##### Command `activateAC`
 Parameters: `<currentState> <currentTemperature>`
@@ -193,10 +193,11 @@ Description:
 ###### `welcomehome activateLights off` -> result : Lights are switched on
 
 
-You can try to play with these values and to see what will happen.
+You can try to play with these values and see what will happen.
 
 #### Smarthome Commands
 
 To see the automation objects that this demo provides you can use `smarthome automation` group commands.
 
-Example: `smarthome automation listRules AirConditionerSwitchOnRule`.
+Example(s):
+* `smarthome automation listRules AirConditionerSwitchOnRule`
