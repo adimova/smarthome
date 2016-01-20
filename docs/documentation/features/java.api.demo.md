@@ -82,7 +82,7 @@ It is created using described above Module Types for creation of its Automation 
 
 The template configuration parameters are:
 
-* `CONFIG_TARGET_TEMPERATURE = "targetTemperature"` referred by `TemperatureConditionType.CONFIG_TEMPERATURE = "temperatute"`
+* `CONFIG_TARGET_TEMPERATURE = "targetTemperature"` referred by `TemperatureConditionType.CONFIG_TEMPERATURE = "temperature"`
 * `CONFIG_OPERATION = "operation"` referred by `TemperatureConditionType.CONFIG_OPERATOR = "operator"`
 
 which are the configuration parameters of the `TemperatureConditionType`. Their default values are `"operation" = "heating"` and `"targetTemperature" = 18`. They are referred so the user can modify their values. For example the `"targetTemperature"` can be set to 20 or the `"operation"` can be set to "cooling".
