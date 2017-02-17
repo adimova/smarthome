@@ -133,75 +133,33 @@ public class ModuleTypeRegistryImpl extends AbstractRegistry<ModuleType, String,
     }
 
     @Override
-    public Collection<TriggerType> getTriggers(Locale locale, String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(locale, tags);
-        Collection<TriggerType> triggerTypes = new ArrayList<TriggerType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof TriggerType) {
-                triggerTypes.add((TriggerType) mt);
-            }
-        }
-        return triggerTypes;
+    public Collection<TriggerType> getTriggers(String... tags) {
+        return filterByClass(TriggerType.class, getByTags(tags));
     }
 
     @Override
-    public Collection<TriggerType> getTriggers(String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(tags);
-        Collection<TriggerType> triggerTypes = new ArrayList<TriggerType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof TriggerType) {
-                triggerTypes.add((TriggerType) mt);
-            }
-        }
-        return triggerTypes;
+    public Collection<TriggerType> getTriggers(Locale locale, String... tags) {
+        return filterByClass(TriggerType.class, getByTags(locale, tags));
     }
 
     @Override
     public Collection<ConditionType> getConditions(String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(tags);
-        Collection<ConditionType> conditionTypes = new ArrayList<ConditionType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof ConditionType) {
-                conditionTypes.add((ConditionType) mt);
-            }
-        }
-        return conditionTypes;
+        return filterByClass(ConditionType.class, getByTags(tags));
     }
 
     @Override
     public Collection<ConditionType> getConditions(Locale locale, String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(locale, tags);
-        Collection<ConditionType> conditionTypes = new ArrayList<ConditionType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof ConditionType) {
-                conditionTypes.add((ConditionType) mt);
-            }
-        }
-        return conditionTypes;
+        return filterByClass(ConditionType.class, getByTags(locale, tags));
     }
 
     @Override
     public Collection<ActionType> getActions(String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(tags);
-        Collection<ActionType> actionTypes = new ArrayList<ActionType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof ActionType) {
-                actionTypes.add((ActionType) mt);
-            }
-        }
-        return actionTypes;
+        return filterByClass(ActionType.class, getByTags(tags));
     }
 
     @Override
     public Collection<ActionType> getActions(Locale locale, String... tags) {
-        Collection<ModuleType> moduleTypes = getByTags(locale, tags);
-        Collection<ActionType> actionTypes = new ArrayList<ActionType>();
-        for (ModuleType mt : moduleTypes) {
-            if (mt instanceof ActionType) {
-                actionTypes.add((ActionType) mt);
-            }
-        }
-        return actionTypes;
+        return filterByClass(ActionType.class, getByTags(locale, tags));
     }
 
     private ModuleType createCopy(ModuleType mType) {
@@ -293,6 +251,16 @@ public class ModuleTypeRegistryImpl extends AbstractRegistry<ModuleType, String,
             }
         }
         return res;
+    }
+
+    private static <T, O> Collection<T> filterByClass(final Class<T> clazz, Collection<O> unfiltered) {
+        final Collection<T> filtered = new ArrayList<T>(unfiltered.size());
+        for (final O obj : unfiltered) {
+            if (clazz.isInstance(obj)) {
+                filtered.add(clazz.cast(obj));
+            }
+        }
+        return filtered;
     }
 
 }
